@@ -102,44 +102,44 @@ set<string> stl_solve(vector<int> nums)
 }
 
 // method 2
-// set<string> recur_solve(vector<int> nums)
-// {
-//     set<string> solutions;
-//     _recur_solve(nums, {}, solutions);
-//     return solutions;
-// }
+set<string> recur_solve(vector<int> nums)
+{
+    set<string> solutions;
+    _recur_solve(nums, {}, solutions);
+    return solutions;
+}
 
-// void _recur_solve(vector<int> nums, vector<int> his, set<string> &solutions)
-// {
-//     if (nums.size() == 0)
-//     {
-//         vector<char> opers;
-//         for (char oper1 : operators)
-//         {
-//             for (char oper2 : operators)
-//             {
-//                 for (char oper3 : operators)
-//                 {
-//                     opers = {oper1, oper2, oper3};
-//                     vector<int> orders = {0, 1, 2};
-//                     do
-//                     {
-//                         if (calc_eq(nums, opers, orders) == 24)
-//                         {
-//                             solutions.insert(eq_to_string(nums, opers));
-//                         }
-//                     } while (next_permutation(orders.begin(), orders.end()));
-//                 }
-//             }
-//         }
-//     }
-//     vector<int> tmp = nums;
-//     for (int i = 0; i < (int)nums.size(); i++)
-//     {
-//         his.push_back(nums[i]);
-//         tmp.erase(tmp.begin() + i);
-//         _recur_solve(tmp, his, solutions);
-//         tmp = nums;
-//         his.pop_back();
-//     }
-// }
+void _recur_solve(vector<int> nums, vector<int> his, set<string> &solutions)
+{
+    if (nums.size() == 0)
+    {
+        vector<char> opers;
+        for (char oper1 : operators)
+        {
+            for (char oper2 : operators)
+            {
+                for (char oper3 : operators)
+                {
+                    opers = {oper1, oper2, oper3};
+                    vector<int> orders = {0, 1, 2};
+                    do
+                    {
+                        if (calc_eq(nums, opers, orders) == 24)
+                        {
+                            solutions.insert(eq_to_string(nums, opers, orders));
+                        }
+                    } while (next_permutation(orders.begin(), orders.end()));
+                }
+            }
+        }
+    }
+    vector<int> tmp = nums;
+    for (int i = 0; i < (int)nums.size(); i++)
+    {
+        his.push_back(nums[i]);
+        tmp.erase(tmp.begin() + i);
+        _recur_solve(tmp, his, solutions);
+        tmp = nums;
+        his.pop_back();
+    }
+}
