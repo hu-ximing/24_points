@@ -23,22 +23,6 @@ int main()
 {
     vector<int> nums(4);
     set<string> solutions;
-
-    // debug
-    nums = {7, 8, 8, 4};
-    solutions = stl_solve(nums);
-    for (int x : nums)
-    {
-        cout << x << " ";
-    }
-    cout << "\n";
-    for (auto s : solutions)
-    {
-        cout << s << "\n";
-    }
-    return 0;
-    // main
-
     for (;;)
     {
         do
