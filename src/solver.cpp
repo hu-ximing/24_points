@@ -60,11 +60,16 @@ int calc_eq(vector<int> nums, vector<char> opers, vector<int> orders)
 
 string eq_to_string(vector<int> nums, vector<char> opers, vector<int> orders)
 {
+    vector<int> oper_at_order(orders.size());
+    for (int i = 0; i < (int)orders.size(); i++)
+    {
+        oper_at_order[orders[i]] = i;
+    }
     string s;
     for (int i = 0; i < orders.size(); i++)
     {
         s += Str(nums[i]) + Str(" ") +
-             Str(orders[i]) + Str(opers[i]) + Str(" ");
+             Str(oper_at_order[i]) + Str(opers[i]) + Str(" ");
     }
     s += Str(nums.back());
     return s;
